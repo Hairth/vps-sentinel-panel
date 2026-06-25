@@ -1,0 +1,2 @@
+PANEL_SHARED_SECRET=replace-with-random-hex-secret
+PANEL_TOKEN=replace-with-random-browser-token

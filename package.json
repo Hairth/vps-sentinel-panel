@@ -1,0 +1,29 @@
+{
+  "name": "vps-sentinel-panel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "npm run db:migrations:apply && wrangler deploy",
+    "db:migrations:apply": "wrangler d1 migrations apply DB --remote"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  },
+  "cloudflare": {
+    "bindings": {
+      "DB": {
+        "description": "Cloudflare D1 database used by the vps-sentinel panel. Cloudflare can create this automatically during Deploy to Cloudflare."
+      },
+      "PANEL_SHARED_SECRET": {
+        "description": "HMAC ingest secret shared with every vps-sentinel agent. Generate a random value, for example `openssl rand -hex 32`."
+      },
+      "PANEL_TOKEN": {
+        "description": "Private browser token for the management pages and review APIs. Generate a random value, for example `openssl rand -hex 32`."
+      },
+      "PANEL_ADMIN_PATH": {
+        "description": "Hidden management entry path. Keep the leading slash. You can change `/panel-admin` to a random path like `/a13f90c2d4b8`."
+      }
+    }
+  }
+}
